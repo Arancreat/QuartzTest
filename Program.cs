@@ -16,7 +16,7 @@ namespace QuartzTest
                     .WithCronSchedule(builder.Configuration["cronSchedule"]!));
             });
 
-            builder.Services.AddQuartzHostedService();
+            builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
             builder.Services.AddScoped<MainJob>();
             builder.Services.AddScoped<IMainService, MainService>();
 
